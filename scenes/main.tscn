@@ -6,43 +6,84 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="Wall" parent="." instance=ExtResource("1_si8xv")]
-position = Vector2(519, 604)
-scale = Vector2(17.3984, 2.12268)
-
-[node name="Wall2" parent="." instance=ExtResource("1_si8xv")]
-position = Vector2(783, 410)
-scale = Vector2(-1.29902, 1.16082)
-
-[node name="Wall3" parent="." instance=ExtResource("1_si8xv")]
-position = Vector2(938, 406)
-scale = Vector2(-1.29902, 1.16082)
-
-[node name="Wall4" parent="." instance=ExtResource("1_si8xv")]
-position = Vector2(938, 264)
-scale = Vector2(-1.29902, 1.16082)
-
-[node name="Wall5" parent="." instance=ExtResource("1_si8xv")]
-position = Vector2(44, 207)
-scale = Vector2(-1.31371, 5.40772)
-
 [node name="Player" parent="." instance=ExtResource("2_783kf")]
-position = Vector2(175, 322)
+position = Vector2(343, 427)
 
-[node name="Ball" parent="." instance=ExtResource("3_gqra2")]
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(519, 604)
+
+[node name="Wall6" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(644, 604)
+
+[node name="Wall7" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(761, 604)
+
+[node name="Wall8" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(880, 604)
+
+[node name="Wall9" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(1001, 604)
+
+[node name="Wall10" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(1117, 604)
+
+[node name="Wall11" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(399, 604)
+
+[node name="Wall17" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(277, 604)
+
+[node name="Wall18" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(157, 604)
+
+[node name="Wall19" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(37, 604)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(813, 489)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(932, 487)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(936, 371)
+
+[node name="Wall5" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(37, 241)
+
+[node name="Wall12" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(935, 252)
+
+[node name="Wall13" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(39, 138)
+
+[node name="Wall14" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(34, 46)
+
+[node name="Wall15" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(36, 353)
+
+[node name="Wall16" parent="Walls" instance=ExtResource("1_si8xv")]
+position = Vector2(37, 479)
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="Ball" parent="Balls" instance=ExtResource("3_gqra2")]
 position = Vector2(530, 376)
 
-[node name="Ball2" parent="." instance=ExtResource("3_gqra2")]
+[node name="Ball2" parent="Balls" instance=ExtResource("3_gqra2")]
 position = Vector2(490, 363)
 
-[node name="Ball3" parent="." instance=ExtResource("3_gqra2")]
+[node name="Ball3" parent="Balls" instance=ExtResource("3_gqra2")]
 position = Vector2(526, 327)
 
-[node name="Ball4" parent="." instance=ExtResource("3_gqra2")]
-position = Vector2(165, 217)
+[node name="Ball4" parent="Balls" instance=ExtResource("3_gqra2")]
+position = Vector2(346, 308)
 
-[node name="Ball5" parent="." instance=ExtResource("3_gqra2")]
-position = Vector2(816, 310)
+[node name="Ball5" parent="Balls" instance=ExtResource("3_gqra2")]
+position = Vector2(846, 389)
 
-[node name="Ball6" parent="." instance=ExtResource("3_gqra2")]
+[node name="Ball6" parent="Balls" instance=ExtResource("3_gqra2")]
 position = Vector2(155, 429)
