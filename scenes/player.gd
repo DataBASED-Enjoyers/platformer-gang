@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var speed = 130.0
 @export var jump_velocity = -300.0
 @export var custom_gravity = 1560
-@export var attack_strength = 100
+@export var attack_strength = 500
 
 const PUSH_FORCE = 40.0
 
