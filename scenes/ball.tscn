@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf2monh5sssr2"]
+
+[ext_resource type="Script" path="res://scenes/ball.gd" id="1_seeqd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sbjpp"]
+bounce = 0.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjaj3"]
+radius = 17.0
+
+[sub_resource type="Gradient" id="Gradient_nhmp1"]
+offsets = PackedFloat32Array(0, 0.569106, 0.577236, 1)
+colors = PackedColorArray(0.513726, 0, 0, 1, 0.209892, 0.0986615, 0.0235689, 1, 0.74902, 0.74902, 0.74902, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dstc7"]
+gradient = SubResource("Gradient_nhmp1")
+fill = 1
+fill_from = Vector2(0.5, 0.508046)
+fill_to = Vector2(0.810345, 0.18046)
+
+[node name="Ball" type="RigidBody2D" groups=["movable_objects"]]
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_sbjpp")
+script = ExtResource("1_seeqd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bjaj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_dstc7")

@@ -1,3 +1,48 @@
-[gd_scene format=3 uid="uid://cikoruaxvsc2"]
+[gd_scene load_steps=4 format=3 uid="uid://cikoruaxvsc2"]
+
+[ext_resource type="PackedScene" uid="uid://dypbm75vga7v6" path="res://scenes/wall.tscn" id="1_si8xv"]
+[ext_resource type="PackedScene" uid="uid://bjqc8ul3foelh" path="res://scenes/player.tscn" id="2_783kf"]
+[ext_resource type="PackedScene" uid="uid://bf2monh5sssr2" path="res://scenes/ball.tscn" id="3_gqra2"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_si8xv")]
+position = Vector2(519, 604)
+scale = Vector2(17.3984, 2.12268)
+
+[node name="Wall2" parent="." instance=ExtResource("1_si8xv")]
+position = Vector2(783, 410)
+scale = Vector2(-1.29902, 1.16082)
+
+[node name="Wall3" parent="." instance=ExtResource("1_si8xv")]
+position = Vector2(938, 406)
+scale = Vector2(-1.29902, 1.16082)
+
+[node name="Wall4" parent="." instance=ExtResource("1_si8xv")]
+position = Vector2(938, 264)
+scale = Vector2(-1.29902, 1.16082)
+
+[node name="Wall5" parent="." instance=ExtResource("1_si8xv")]
+position = Vector2(44, 207)
+scale = Vector2(-1.31371, 5.40772)
+
+[node name="Player" parent="." instance=ExtResource("2_783kf")]
+position = Vector2(175, 322)
+
+[node name="Ball" parent="." instance=ExtResource("3_gqra2")]
+position = Vector2(530, 376)
+
+[node name="Ball2" parent="." instance=ExtResource("3_gqra2")]
+position = Vector2(490, 363)
+
+[node name="Ball3" parent="." instance=ExtResource("3_gqra2")]
+position = Vector2(526, 327)
+
+[node name="Ball4" parent="." instance=ExtResource("3_gqra2")]
+position = Vector2(165, 217)
+
+[node name="Ball5" parent="." instance=ExtResource("3_gqra2")]
+position = Vector2(816, 310)
+
+[node name="Ball6" parent="." instance=ExtResource("3_gqra2")]
+position = Vector2(155, 429)

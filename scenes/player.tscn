@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjqc8ul3foelh"]
+
+[ext_resource type="Texture2D" uid="uid://c30cxbsc2er20" path="res://icon.svg" id="1_l4atp"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ofn0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asbjq"]
+size = Vector2(125, 125)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oefok"]
+blend_mode = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxtj0"]
+size = Vector2(110, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ip4q"]
+size = Vector2(110, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6505i"]
+size = Vector2(120, 15)
+
+[sub_resource type="Animation" id="Animation_uv1oi"]
+resource_name = "attack"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AttackArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_opw7a"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_oy4n2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/AttackArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mtgm4"]
+_data = {
+"RESET": SubResource("Animation_oy4n2"),
+"attack": SubResource("Animation_uv1oi"),
+"idle": SubResource("Animation_opw7a")
+}
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_ofn0u")
+speed = 200.0
+jump_velocity = -700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_asbjq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_oefok")
+texture = ExtResource("1_l4atp")
+
+[node name="GrabArea2D" type="Area2D" parent="Sprite2D"]
+collision_layer = 8
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/GrabArea2D"]
+position = Vector2(55, 0)
+shape = SubResource("RectangleShape2D_cxtj0")
+
+[node name="AttackArea2D" type="Area2D" parent="Sprite2D"]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackArea2D"]
+position = Vector2(55, 0)
+shape = SubResource("RectangleShape2D_1ip4q")
+disabled = true
+debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
+
+[node name="GroundDetector" type="Area2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/GroundDetector"]
+position = Vector2(0, 72)
+shape = SubResource("RectangleShape2D_6505i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mtgm4")
+}
+autoplay = "idle"
+
+[connection signal="body_entered" from="Sprite2D/AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_entered" from="Sprite2D/GroundDetector" to="." method="_on_ground_detector_body_entered"]
+[connection signal="body_exited" from="Sprite2D/GroundDetector" to="." method="_on_ground_detector_body_exited"]
