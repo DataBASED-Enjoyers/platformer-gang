@@ -1,9 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf2monh5sssr2"]
+[gd_scene load_steps=5 format=3 uid="uid://bf2monh5sssr2"]
 
 [ext_resource type="Script" path="res://scenes/ball.gd" id="1_seeqd"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sbjpp"]
-bounce = 0.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bjaj3"]
 radius = 17.0
@@ -18,11 +15,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.508046)
 fill_to = Vector2(0.810345, 0.18046)
 
-[node name="Ball" type="RigidBody2D" groups=["movable_objects"]]
+[node name="Ball" type="CharacterBody2D" groups=["movable_objects"]]
 collision_layer = 4
 collision_mask = 7
-mass = 0.5
-physics_material_override = SubResource("PhysicsMaterial_sbjpp")
 script = ExtResource("1_seeqd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

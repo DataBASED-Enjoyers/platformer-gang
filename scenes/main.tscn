@@ -8,7 +8,6 @@
 
 [node name="Player" parent="." instance=ExtResource("2_783kf")]
 position = Vector2(343, 427)
-jump_velocity = 1200.0
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -81,8 +80,8 @@ position = Vector2(490, 363)
 position = Vector2(526, 327)
 
 [node name="Ball4" parent="Balls" instance=ExtResource("3_gqra2")]
+process_mode = 4
 position = Vector2(346, 308)
-freeze = true
 
 [node name="Ball5" parent="Balls" instance=ExtResource("3_gqra2")]
 position = Vector2(846, 389)
