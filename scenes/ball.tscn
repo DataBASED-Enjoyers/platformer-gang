@@ -21,6 +21,7 @@ fill_to = Vector2(0.810345, 0.18046)
 [node name="Ball" type="RigidBody2D" groups=["movable_objects"]]
 collision_layer = 4
 collision_mask = 7
+mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_sbjpp")
 script = ExtResource("1_seeqd")
 
