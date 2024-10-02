@@ -3,37 +3,33 @@ extends Node
 
 @export var initial_state: State = null
 
-@onready var state: State = (func get_initial_state() -> State:
-	return initial_state if initial_state != null else get_child(0)
-).call()
+var current_state: State
 
 
-func _ready() -> void:
-	for state_node: State in find_children("*", "State"):
-		state_node.finished.connect(_transition_to_next_state)
-
-	await owner.ready
-	state.enter("")
+func init() -> void:
+	change_state(initial_state)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	state.handle_input(event)
+func process_frame(delta: float) -> void:
+	var new_state: State = current_state.process_frame(delta)
+	if new_state:
+		change_state(new_state)
 
 
-func _process(delta: float) -> void:
-	state.update(delta)
+func process_input(event: InputEvent) -> void:
+	var new_state: State = current_state.process_input(event)
+	if new_state:
+		change_state(new_state)
 
 
-func _physics_process(delta: float) -> void:
-	state.physics_update(delta)
+func process_physics(delta: float) -> void:
+	var new_state: State = current_state.process_physics(delta)
+	if new_state:
+		change_state(new_state)
 
 
-func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
-	if not has_node(target_state_path):
-		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
-		return
-
-	var previous_state_path := state.name
-	state.exit()
-	state = get_node(target_state_path)
-	state.enter(previous_state_path, data)
+func change_state(new_state: State) -> void:
+	if current_state:
+		current_state.exit()
+	current_state = new_state
+	current_state.enter()
