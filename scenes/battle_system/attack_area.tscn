@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmsq58uo1klf6"]
-
-[ext_resource type="Script" path="res://scenes/battle_system/attack_area.gd" id="1_7qrbs"]
-
-[node name="AttackArea" type="Area2D"]
-script = ExtResource("1_7qrbs")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
