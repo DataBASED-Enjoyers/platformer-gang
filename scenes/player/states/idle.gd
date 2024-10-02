@@ -6,13 +6,8 @@ func enter(previous_state_path: String, data = {}) -> void:
 	player.animation_player.play(PlayerAnimationNames.IDLE)
 
 
-func physics_update(_delta: float) -> void:
-	player.velocity.y += player.gravity * _delta
-	player.move_and_slide()
+func physics_update(delta: float) -> void:
+	super(delta) 
 	
-	if not player.is_on_floor():
-		finished.emit(FALLING)
-	elif Input.is_action_just_pressed("jump"):
-		finished.emit(JUMPING)
-	elif Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right"):
-		finished.emit(RUNNING)
+	if Input.get_axis("move_right", "move_left"):
+		finished.emit(RUN)

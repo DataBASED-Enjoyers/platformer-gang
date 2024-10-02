@@ -3,10 +3,12 @@ extends State
 
 
 const IDLE = "Idle"
-const RUNNING = "Running"
-const JUMPING = "Jumping"
-const FALLING = "Falling"
-const LANDING = "Landing"
+const WALK = "Walk"
+const RUN = "Run"
+const JUMP = "Jump"
+const FALL = "Fall"
+const LAND = "Land"
+const PREJUMP = "Prejump"
 
 var player: Player
 

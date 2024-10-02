@@ -1,41 +1,19 @@
-[gd_scene load_steps=35 format=3 uid="uid://bjqc8ul3foelh"]
+[gd_scene load_steps=26 format=3 uid="uid://bjqc8ul3foelh"]
 
 [ext_resource type="Texture2D" uid="uid://c30cxbsc2er20" path="res://assets/icon.svg" id="1_l4atp"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ofn0u"]
 [ext_resource type="Script" path="res://scenes/player/states/state_machine_player.gd" id="2_av7tr"]
-[ext_resource type="Script" path="res://scenes/player/support_scripts/hit_boxes.gd" id="2_ww1fv"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="3_4hqpa"]
-[ext_resource type="Script" path="res://scenes/player/states/running.gd" id="4_3jscb"]
-[ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="5_5v1bj"]
-[ext_resource type="Script" path="res://scenes/player/states/falling.gd" id="6_gvrfv"]
-[ext_resource type="Script" path="res://scenes/player/states/landing.gd" id="7_mx7wl"]
+[ext_resource type="Script" path="res://scenes/player/states/run.gd" id="4_3jscb"]
+[ext_resource type="Script" path="res://scenes/player/states/jump.gd" id="5_5v1bj"]
+[ext_resource type="Script" path="res://scenes/player/states/fall.gd" id="6_gvrfv"]
+
+[sub_resource type="GDScript" id="GDScript_mfxxj"]
+script/source = "extends PlayerGroundState
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asbjq"]
 size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtws1"]
-size = Vector2(96, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikrpy"]
-size = Vector2(64, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5lo4"]
-size = Vector2(112, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f4j7"]
-size = Vector2(80, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ip4q"]
-size = Vector2(128, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxqwj"]
-size = Vector2(112, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4ypi"]
-size = Vector2(96, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgguf"]
-size = Vector2(112, 80)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oefok"]
 blend_mode = 3
@@ -65,74 +43,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxes/GroundAttacks/5PArea/CollisionShape2D:disabled")
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [&"idle"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"idle"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
 "values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HitBoxes/GroundAttacks/8PArea/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HitBoxes/AirialAttacks/J2PArea/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HitBoxes/AirialAttacks/J2PArea/CollisionShape2D2:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_uxmtm"]
@@ -142,18 +72,6 @@ resource_name = "fall"
 resource_name = "8p"
 length = 0.333335
 step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxes/GroundAttacks/8PArea/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_opw7a"]
 resource_name = "idle"
@@ -195,30 +113,6 @@ resource_name = "j.8p"
 resource_name = "j.2p"
 length = 0.333335
 step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxes/AirialAttacks/J2PArea/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitBoxes/AirialAttacks/J2PArea/CollisionShape2D2:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_fdy4e"]
 resource_name = "j.5p"
@@ -235,18 +129,6 @@ step = 0.0166667
 resource_name = "5p"
 length = 0.333337
 step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxes/GroundAttacks/5PArea/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.233333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_leg46"]
 resource_name = "run"
@@ -280,100 +162,21 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_4hqpa")
 
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node" parent="StateMachine"]
+script = SubResource("GDScript_mfxxj")
+
+[node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("4_3jscb")
 
-[node name="Jumping" type="Node" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("5_5v1bj")
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("6_gvrfv")
-
-[node name="Landing" type="Node" parent="StateMachine"]
-script = ExtResource("7_mx7wl")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_asbjq")
 debug_color = Color(0.635294, 0.501961, 0, 0.541176)
-
-[node name="HitBoxes" type="Node2D" parent="."]
-script = ExtResource("2_ww1fv")
-
-[node name="AirialAttacks" type="Node2D" parent="HitBoxes"]
-
-[node name="J2PArea" type="Area2D" parent="HitBoxes/AirialAttacks"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/AirialAttacks/J2PArea"]
-position = Vector2(0, 64)
-shape = SubResource("RectangleShape2D_mtws1")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBoxes/AirialAttacks/J2PArea"]
-position = Vector2(0, 120)
-shape = SubResource("RectangleShape2D_ikrpy")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="J8PArea" type="Area2D" parent="HitBoxes/AirialAttacks"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/AirialAttacks/J8PArea"]
-position = Vector2(40, -72)
-shape = SubResource("RectangleShape2D_x5lo4")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="J5PArea" type="Area2D" parent="HitBoxes/AirialAttacks"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/AirialAttacks/J5PArea"]
-position = Vector2(88, 0)
-shape = SubResource("RectangleShape2D_4f4j7")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="GroundAttacks" type="Node2D" parent="HitBoxes"]
-
-[node name="5PArea" type="Area2D" parent="HitBoxes/GroundAttacks"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/GroundAttacks/5PArea"]
-position = Vector2(64, 0)
-shape = SubResource("RectangleShape2D_1ip4q")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="2PArea" type="Area2D" parent="HitBoxes/GroundAttacks"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/GroundAttacks/2PArea"]
-position = Vector2(40, 56)
-shape = SubResource("RectangleShape2D_oxqwj")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBoxes/GroundAttacks/2PArea"]
-position = Vector2(32, 40)
-shape = SubResource("RectangleShape2D_d4ypi")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
-
-[node name="8PArea" type="Area2D" parent="HitBoxes/GroundAttacks"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxes/GroundAttacks/8PArea"]
-position = Vector2(40, -72)
-shape = SubResource("RectangleShape2D_hgguf")
-disabled = true
-debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_oefok")
@@ -385,5 +188,3 @@ libraries = {
 "": SubResource("AnimationLibrary_mtgm4")
 }
 autoplay = "idle"
-
-[connection signal="body_entered" from="HitBoxes/AirialAttacks/J2PArea" to="." method="_on_j_2p_area_body_entered"]

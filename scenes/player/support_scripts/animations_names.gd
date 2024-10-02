@@ -1,12 +1,12 @@
 class_name PlayerAnimationNames
 extends Node
 
-const ANIM_5P = "punch"
-const ANIM_2P = "low_punch"
-const ANIM_8P = "high_punch"
-const ANIM_JP = "jumping_punch"
-const ANIM_J2P = "jumping_low_punch"
-const ANIM_J8P = "jumping_high_punch"
+const F_P = "punch"
+const L_P = "low_punch"
+const H_P = "high_punch"
+const J_P = "jumping_punch"
+const J_L_P = "jumping_low_punch"
+const J_H_P = "jumping_high_punch"
 
 const RUN = "run"
 const FALL = "fall"

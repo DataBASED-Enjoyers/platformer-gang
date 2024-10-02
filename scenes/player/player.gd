@@ -9,7 +9,6 @@ enum AttackType {
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var hit_boxes: Node2D = $HitBoxes
 
 @export var speed = 200.0
 @export var jump_impulse = 360.0
@@ -47,7 +46,6 @@ func _physics_process(_delta: float) -> void:
 
 func flip_character(direction):
 	animated_sprite_2d.scale.x = direction
-	hit_boxes.scale.x = direction
 
 
 func _input(event: InputEvent) -> void:
@@ -64,14 +62,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("punch"):
 		match current_attack_type:
 			AttackType.LOW:
-				animation_player.play(PlayerAnimationNames.ANIM_J2P)
+				animation_player.play(PlayerAnimationNames.J_L_P)
 			AttackType.STRAIGHT:
-				animation_player.play(PlayerAnimationNames.ANIM_5P)
+				animation_player.play(PlayerAnimationNames.F_P)
 			AttackType.HIGH:
-				animation_player.play(PlayerAnimationNames.ANIM_8P)
-
-
-func _on_j_2p_area_body_entered(_body: Node2D) -> void:
-	var direction = Vector2(0, -1)
-	knockback_velocity = direction * pushback_force
-	is_knocked_back = true
+				animation_player.play(PlayerAnimationNames.H_P)
