@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackParams" load_steps=2 format=3 uid="uid://sxbgi617wu7s"]
+
+[ext_resource type="Script" path="res://scenes/player/states/attack_states/attack_params.gd" id="1_yqqp5"]
+
+[resource]
+script = ExtResource("1_yqqp5")
+name = "Jumping Punch"
+knocks_back = true
+animation = "jumping_punch"

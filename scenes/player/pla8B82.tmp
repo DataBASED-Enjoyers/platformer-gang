@@ -3,16 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://c30cxbsc2er20" path="res://assets/icon.svg" id="1_l4atp"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ofn0u"]
 [ext_resource type="Script" path="res://scenes/player/states/state_machine_player.gd" id="2_av7tr"]
-[ext_resource type="Script" path="res://scenes/player/states/grounded_states/idle.gd" id="3_4hqpa"]
-[ext_resource type="Script" path="res://scenes/player/states/grounded_states/player_ground_state.gd" id="3_ufve5"]
-[ext_resource type="Script" path="res://scenes/player/states/grounded_states/run.gd" id="4_3jscb"]
-[ext_resource type="Script" path="res://scenes/player/states/airborne_states/jump.gd" id="5_5v1bj"]
-[ext_resource type="Script" path="res://scenes/player/states/airborne_states/fall.gd" id="6_gvrfv"]
-[ext_resource type="Script" path="res://scenes/player/states/airborne_states/player_airborne_state.gd" id="6_nch2e"]
+[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="3_4hqpa"]
+[ext_resource type="Script" path="res://scenes/player/states/player_ground_state.gd" id="3_ufve5"]
+[ext_resource type="Script" path="res://scenes/player/states/run.gd" id="4_3jscb"]
+[ext_resource type="Script" path="res://scenes/player/states/jump.gd" id="5_5v1bj"]
+[ext_resource type="Script" path="res://scenes/player/states/fall.gd" id="6_gvrfv"]
+[ext_resource type="Script" path="res://scenes/player/states/player_airborne_state.gd" id="6_nch2e"]
 [ext_resource type="Script" path="res://scenes/battle_system/hurt_box.gd" id="7_v8oip"]
 [ext_resource type="Script" path="res://scenes/battle_system/hit_box.gd" id="8_ksrwa"]
-[ext_resource type="Script" path="res://scenes/player/states/attack_states/grounded_attack.gd" id="9_po4fg"]
-[ext_resource type="Script" path="res://scenes/player/states/attack_states/airborne_attack.gd" id="10_qxa5a"]
+[ext_resource type="Script" path="res://scenes/player/states/grounded_attack.gd" id="9_po4fg"]
+[ext_resource type="Script" path="res://scenes/player/states/airborne_attack.gd" id="10_qxa5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6pra"]
 size = Vector2(128, 128)
@@ -78,42 +78,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("States/StraightPunch/HitBox/CollisionShape2D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("States/JumpingPunch/HitBox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("States/JumpingPunch/HitBox/CollisionShape2D2:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_uxmtm"]
 resource_name = "fall"
@@ -166,32 +130,7 @@ step = 0.0166667
 
 [sub_resource type="Animation" id="Animation_fdy4e"]
 resource_name = "j.5p"
-length = 0.200002
 step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("States/JumpingPunch/HitBox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0500001, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("States/JumpingPunch/HitBox/CollisionShape2D2:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0500001, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_xgh67"]
 resource_name = "land"
@@ -202,20 +141,8 @@ step = 0.0166667
 
 [sub_resource type="Animation" id="Animation_uv1oi"]
 resource_name = "5p"
-length = 0.200002
+length = 0.333337
 step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("States/StraightPunch/HitBox/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0500001, 0.133334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_leg46"]
 resource_name = "run"
@@ -291,12 +218,6 @@ debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
 
 [node name="JumpingPunch" type="Node2D" parent="States"]
 
-[node name="HurtBox" type="Area2D" parent="States/JumpingPunch"]
-script = ExtResource("7_v8oip")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="States/JumpingPunch/HurtBox"]
-shape = SubResource("RectangleShape2D_h6pra")
-
 [node name="HitBox" type="Area2D" parent="States/JumpingPunch"]
 script = ExtResource("8_ksrwa")
 
@@ -312,6 +233,12 @@ shape = SubResource("RectangleShape2D_n7v0q")
 disabled = true
 debug_color = Color(1, 0.00930105, 0.0366831, 0.42)
 
+[node name="HurtBox" type="Area2D" parent="States/JumpingPunch"]
+script = ExtResource("7_v8oip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="States/JumpingPunch/HurtBox"]
+shape = SubResource("RectangleShape2D_h6pra")
+
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_asbjq")
 debug_color = Color(0.635294, 0.501961, 0, 0.541176)
@@ -326,5 +253,3 @@ libraries = {
 "": SubResource("AnimationLibrary_mtgm4")
 }
 autoplay = "idle"
-
-[connection signal="body_entered" from="States/JumpingPunch/HitBox" to="." method="_on_hit_box_body_entered"]

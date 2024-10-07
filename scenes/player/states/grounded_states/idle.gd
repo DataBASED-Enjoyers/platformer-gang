@@ -1,3 +1,4 @@
+class_name PlayerIdleState
 extends PlayerGroundState
 
 
@@ -9,5 +10,5 @@ func enter(previous_state_path: String, data = {}) -> void:
 func physics_update(delta: float) -> void:
 	super(delta) 
 	
-	if Input.get_axis("move_right", "move_left"):
+	if Input.get_axis("move_left", "move_right"):
 		finished.emit(RUN)

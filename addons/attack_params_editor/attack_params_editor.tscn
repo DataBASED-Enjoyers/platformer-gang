@@ -1,0 +1,74 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxyc6s76xl23"]
+
+[ext_resource type="Script" path="res://addons/attack_params_editor/attack_params_editor_panel.gd" id="1_ci806"]
+
+[node name="Attack Editor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ci806")
+
+[node name="LoadAttackParamsButton" type="Button" parent="."]
+layout_mode = 2
+text = "Upload resource \"AttackParams\""
+
+[node name="CurrentResourcePath" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Choose the Resource AttackParams..."
+editable = false
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="AttackEditorPanel" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="AttackName" type="LineEdit" parent="AttackEditorPanel"]
+layout_mode = 2
+placeholder_text = "Enter Attack Name"
+
+[node name="Knockbacks" type="CheckBox" parent="AttackEditorPanel"]
+layout_mode = 2
+text = "Knockbacks"
+
+[node name="AnimationOptionButton" type="OptionButton" parent="AttackEditorPanel"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "punch"
+popup/item_1/text = "jumping_punch"
+popup/item_1/id = 1
+popup/item_2/text = "punch"
+popup/item_2/id = 2
+popup/item_3/text = "jumping_punch"
+popup/item_3/id = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AttackEditorPanel"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="AttackEditorPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="AttackEditorPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SaveAsButton" type="Button" parent="AttackEditorPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save as...
+"
+
+[connection signal="pressed" from="LoadAttackParamsButton" to="." method="_on_load_attack_params_button_pressed"]
+[connection signal="text_changed" from="AttackEditorPanel/AttackName" to="." method="_on_attack_name_text_changed"]
+[connection signal="toggled" from="AttackEditorPanel/Knockbacks" to="." method="_on_knockbacks_toggled"]
+[connection signal="item_selected" from="AttackEditorPanel/AnimationOptionButton" to="." method="_on_animation_option_button_item_selected"]
+[connection signal="pressed" from="AttackEditorPanel/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="AttackEditorPanel/HBoxContainer/SaveAsButton" to="." method="_on_save_as_button_pressed"]

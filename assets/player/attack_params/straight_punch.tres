@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AttackParams" load_steps=2 format=3 uid="uid://ch2bukrbec5ba"]
+
+[ext_resource type="Script" path="res://scenes/player/states/attack_states/attack_params.gd" id="1_d0xdo"]
+
+[resource]
+script = ExtResource("1_d0xdo")
+name = "Straight Punch"
+knocks_back = false
+animation = "punch"

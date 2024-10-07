@@ -13,5 +13,8 @@ func hitbox_entered(hit_box: HitBox) -> void:
 	if hit_box == null:
 		return
 	
+	if hit_box.owner == owner:
+		return
+	
 	# Deal Damage
-	print("Damage Dealt")
+	#print("Damage Dealt")

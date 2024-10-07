@@ -34,6 +34,9 @@ position = Vector2(1085, 462)
 [node name="Orb" parent="Entities" instance=ExtResource("3_l260s")]
 position = Vector2(274, 394)
 
+[node name="Orb6" parent="Entities" instance=ExtResource("3_l260s")]
+position = Vector2(72, 288)
+
 [node name="Orb2" parent="Entities" instance=ExtResource("3_l260s")]
 position = Vector2(681, 394)
 
