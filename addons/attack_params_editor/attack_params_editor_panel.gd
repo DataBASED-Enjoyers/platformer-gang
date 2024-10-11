@@ -31,6 +31,7 @@ func _ready():
 	file_saver.file_selected.connect(_on_file_saved)
 	file_saver.min_size = Vector2(640, 480)
 	
+	animation_option_button.clear()
 	for anim in attack_animation_names:
 		print(anim)
 		animation_option_button.add_item(anim)

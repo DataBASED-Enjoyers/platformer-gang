@@ -38,14 +38,6 @@ text = "Knockbacks"
 [node name="AnimationOptionButton" type="OptionButton" parent="AttackEditorPanel"]
 layout_mode = 2
 selected = 0
-item_count = 4
-popup/item_0/text = "punch"
-popup/item_1/text = "jumping_punch"
-popup/item_1/id = 1
-popup/item_2/text = "punch"
-popup/item_2/id = 2
-popup/item_3/text = "jumping_punch"
-popup/item_3/id = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AttackEditorPanel"]
 layout_mode = 2
