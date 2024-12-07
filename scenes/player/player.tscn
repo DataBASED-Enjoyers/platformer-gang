@@ -327,4 +327,6 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="body_entered" from="States/JumpingPunch/HitBox" to="." method="_on_hit_box_body_entered"]

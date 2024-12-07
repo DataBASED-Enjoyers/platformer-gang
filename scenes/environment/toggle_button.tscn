@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctv2lb0k3o8c7"]
+
+[ext_resource type="Script" path="res://scenes/environment/toggle_button.gd" id="1_yqdvk"]
+
+[sub_resource type="Gradient" id="Gradient_xujj2"]
+colors = PackedColorArray(0.627451, 0, 0, 1, 0.745098, 0.235294, 0.247059, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xmn0h"]
+gradient = SubResource("Gradient_xujj2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph4lv"]
+size = Vector2(32, 32)
+
+[node name="ToggleButton" type="Area2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_yqdvk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = SubResource("GradientTexture2D_xmn0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ph4lv")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cag0iounbvhfr"]
+
+[ext_resource type="Texture2D" uid="uid://c30cxbsc2er20" path="res://assets/icon.svg" id="1_bcf5y"]
+[ext_resource type="Script" path="res://scenes/environment/moving_platform.gd" id="1_qu0nn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfj5l"]
+size = Vector2(256, 64)
+
+[sub_resource type="Animation" id="Animation_txea5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_lps7n"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 2, 0.0251902, 1, -2.45, -0.0605067, 0.25, 0),
+"times": PackedFloat32Array(0, 4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_snrx6"]
+_data = {
+"RESET": SubResource("Animation_txea5"),
+"move": SubResource("Animation_lps7n")
+}
+
+[node name="PlatformPath" type="Path2D"]
+script = ExtResource("1_qu0nn")
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform"]
+scale = Vector2(2, 0.5)
+texture = ExtResource("1_bcf5y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+position = Vector2(0.223499, 0)
+shape = SubResource("RectangleShape2D_qfj5l")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+progress = 63.7831
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../MovingPlatform")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PathFollow2D")
+libraries = {
+"": SubResource("AnimationLibrary_snrx6")
+}

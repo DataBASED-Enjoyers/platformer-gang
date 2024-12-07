@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5s1e6aff33r"]
+[gd_scene load_steps=8 format=3 uid="uid://c5s1e6aff33r"]
 
 [ext_resource type="PackedScene" uid="uid://bjqc8ul3foelh" path="res://scenes/player/player.tscn" id="1_krrii"]
 [ext_resource type="PackedScene" uid="uid://dypbm75vga7v6" path="res://scenes/environment/wall.tscn" id="2_76h0v"]
 [ext_resource type="PackedScene" uid="uid://e8io3wuss0g7" path="res://scenes/entities/orb.tscn" id="3_l260s"]
+[ext_resource type="PackedScene" uid="uid://ctv2lb0k3o8c7" path="res://scenes/environment/toggle_button.tscn" id="4_upbod"]
+[ext_resource type="PackedScene" uid="uid://csl53s4vo2v0w" path="res://scenes/environment/door.tscn" id="5_c0b62"]
+[ext_resource type="PackedScene" uid="uid://cag0iounbvhfr" path="res://scenes/environment/moving_platform.tscn" id="6_7wsac"]
+
+[sub_resource type="Curve2D" id="Curve2D_bejir"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 80, 0, 0, 0, 0, 0, -624, 0)
+}
+point_count = 2
 
 [node name="LevelIter1" type="Node2D"]
 
@@ -17,6 +26,18 @@ position = Vector2(69, 586)
 [node name="Wall2" parent="Walls" instance=ExtResource("2_76h0v")]
 position = Vector2(69, 462)
 
+[node name="Wall10" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(-56, 462)
+
+[node name="Wall12" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(-184, 462)
+
+[node name="Wall13" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(-1288, 462)
+
+[node name="Wall11" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(-56, 192)
+
 [node name="Wall3" parent="Walls" instance=ExtResource("2_76h0v")]
 position = Vector2(478, 586)
 
@@ -28,6 +49,15 @@ position = Vector2(1085, 586)
 
 [node name="Wall6" parent="Walls" instance=ExtResource("2_76h0v")]
 position = Vector2(1085, 462)
+
+[node name="Wall7" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(1216, 462)
+
+[node name="Wall8" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(1216, 336)
+
+[node name="Wall9" parent="Walls" instance=ExtResource("2_76h0v")]
+position = Vector2(1216, 208)
 
 [node name="Entities" type="Node2D" parent="."]
 
@@ -48,3 +78,18 @@ position = Vector2(508, 199)
 
 [node name="Orb5" parent="Entities" instance=ExtResource("3_l260s")]
 position = Vector2(396, 293)
+
+[node name="ToggleButton" parent="Entities" node_paths=PackedStringArray("toggling_nodes") instance=ExtResource("4_upbod")]
+position = Vector2(72, 216)
+toggling_nodes = [NodePath("../Door")]
+
+[node name="Door" parent="Entities" instance=ExtResource("5_c0b62")]
+position = Vector2(-8, 328)
+
+[node name="Moving Platforms" type="Node2D" parent="."]
+
+[node name="PlatformPath" parent="Moving Platforms" instance=ExtResource("6_7wsac")]
+position = Vector2(-464, 432)
+curve = SubResource("Curve2D_bejir")
+loop = false
+speed = 200.0
