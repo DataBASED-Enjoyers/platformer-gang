@@ -11,6 +11,11 @@ enum AttackType {
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var states: Node2D = $States
 
+@export_category("Characteristics")
+@export var health = 20
+@export var tea_bar = 24
+
+@export_category("Physics")
 @export var speed = 300.0
 @export var jump_impulse = 500.0
 @export var gravity = 980
